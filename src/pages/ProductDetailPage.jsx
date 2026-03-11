@@ -13,37 +13,86 @@ function ProductDetailPage() {
       .then(data => setProduct(data))
   }, [id])
 
-  if (!product) return <p style={{ textAlign: "center" }}>Loading...</p>
+  if (!product) return (
+    <div style={{ textAlign: "center", marginTop: "100px", fontSize: "20px", color: "#667eea" }}>
+      Loading... ✨
+    </div>
+  )
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#f8f9ff", minHeight: "100vh" }}>
       <Navbar />
       <div style={{
-        maxWidth: "600px",
-        margin: "40px auto",
-        padding: "20px",
-        border: "1px solid #ddd",
-        borderRadius: "8px",
+        maxWidth: "700px",
+        margin: "50px auto",
+        backgroundColor: "white",
+        borderRadius: "24px",
+        padding: "40px",
+        boxShadow: "0 10px 40px rgba(102,126,234,0.15)",
         textAlign: "center"
       }}>
-        <img src={product.image} alt={product.title}
-          style={{ width: "200px", height: "200px", objectFit: "contain" }} />
-        <h2>{product.title}</h2>
-        <p style={{ color: "gray" }}>{product.description}</p>
-        <p style={{ color: "green", fontSize: "24px", fontWeight: "bold" }}>${product.price}</p>
-        <p>⭐ {product.rating.rate} ({product.rating.count} reviews)</p>
+        <div style={{
+          backgroundColor: "#f8f9ff",
+          borderRadius: "16px",
+          padding: "30px",
+          marginBottom: "25px"
+        }}>
+          <img src={product.image} alt={product.title}
+            style={{ width: "220px", height: "220px", objectFit: "contain" }} />
+        </div>
+
+        <span style={{
+          backgroundColor: "#f0f0ff",
+          color: "#667eea",
+          padding: "5px 15px",
+          borderRadius: "20px",
+          fontSize: "13px",
+          fontWeight: "600",
+          textTransform: "uppercase"
+        }}>{product.category}</span>
+
+        <h2 style={{
+          fontSize: "22px",
+          fontWeight: "800",
+          color: "#333",
+          margin: "20px 0 10px"
+        }}>{product.title}</h2>
+
+        <p style={{
+          color: "#888",
+          lineHeight: "1.7",
+          fontSize: "15px",
+          marginBottom: "20px"
+        }}>{product.description}</p>
+
+        <p style={{
+          background: "linear-gradient(135deg, #667eea, #764ba2)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          fontSize: "32px",
+          fontWeight: "800",
+          marginBottom: "10px"
+        }}>${product.price}</p>
+
+        <p style={{ color: "#f5a623", fontSize: "18px", marginBottom: "25px" }}>
+          ⭐ {product.rating.rate} 
+          <span style={{ color: "#aaa", fontSize: "14px" }}> ({product.rating.count} reviews)</span>
+        </p>
+
         <button
           onClick={() => navigate("/")}
           style={{
-            marginTop: "20px",
-            padding: "10px 20px",
-            backgroundColor: "#333",
+            padding: "12px 30px",
+            background: "linear-gradient(135deg, #667eea, #764ba2)",
             color: "white",
             border: "none",
-            borderRadius: "5px",
-            cursor: "pointer"
+            borderRadius: "25px",
+            cursor: "pointer",
+            fontWeight: "700",
+            fontSize: "15px",
+            boxShadow: "0 4px 15px rgba(102,126,234,0.4)"
           }}>
-          ← Back to Products
+          ← Back to Collection
         </button>
       </div>
     </div>
